@@ -1,0 +1,44 @@
+DE:2F:C6:6A:FB:C3					Daryl
+D0:21:1F:DA:EF:EC					Phil
+DD:40:05:1B:F5:55					Will
+C9:00:4D:AE:4A:03 					Greg
+CF:CB:7F:4A:D3:12					Toni
+DD:57:82:0B:68:DE 					Laura
+C0:A2:C9:9A:30:A8					Rohit
+D5:1A:D5:49:FD:4A					Debbie B
+EF:5A:B1:AB:4E:C3					Mark Corner
+EC:E4:42:74:ED:68					Shane
+EF:BF:90:92:63:45					Webby
+EC:81:12:14:DA:D5					Tom
+DF:3A:20:B7:4B:6B					Kim
+DE:77:E4:14:E9:2F					Helen
+D8:F4:4F:6B:D4:30					MarkP
+D7:38:EA:DA:9B:86					AndyT
+FE:AA:AE:9C:9A:39					Michelle
+EF:2D:65:A1:CC:78					Damian
+EB:DB:A8:BA:D5:9F					SteveP
+DF:3A:20:B7:4B:6B					DebbieF
+
+sudo hcitool lescan
+
+var peeps = [	{ name : 'Daryl', 	deviceId : 'DE:2F:C6:6A:FB:C3', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Phil', 	deviceId : 'D0:21:1F:DA:EF:EC', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Will', 	deviceId : 'DD:40:05:1B:F5:55', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Greg', 	deviceId : 'C9:00:4D:AE:4A:03', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Toni', 	deviceId : 'CF:CB:7F:4A:D3:12', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Laura', 	deviceId : 'DD:57:82:0B:68:DE', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Rohit', 	deviceId : 'C0:A2:C9:9A:30:A8', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'DebbieB', deviceId : 'D5:1A:D5:49:FD:4A', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'MarkC', 	deviceId : 'EF:5A:B1:AB:4E:C3', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Shane', 	deviceId : 'EC:E4:42:74:ED:68', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Webby', 	deviceId : 'EF:BF:90:92:63:45', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Tom', 	deviceId : 'EC:81:12:14:DA:D5', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Kim', 	deviceId : 'DF:3A:20:B7:4B:6B', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Helen', 	deviceId : 'DE:77:E4:14:E9:2F', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'MarkP', 	deviceId : 'D8:F4:4F:6B:D4:30', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'AndyT', 	deviceId : 'D7:38:EA:DA:9B:86', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Damian', 	deviceId : 'EF:2D:65:A1:CC:78', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'Michelle',deviceId : 'FE:AA:AE:9C:9A:39', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'SteveP' 	deviceId : 'EB:DB:A8:BA:D5:9F', avatar : 'http://lorempixel.com/50/50/' },
+				{ name : 'DebbieF',	deviceId : 'DF:3A:20:B7:4B:6B', avatar : 'http://lorempixel.com/50/50/' }
+			];

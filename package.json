@@ -1,0 +1,16 @@
+{
+    "name": "FitBitTracker",
+    "version": "0.1.0",
+    "description": "Track FitBits when in range of a node",
+    "dependencies": {
+        "socket.io": "latest",
+        "express": "latest",
+        "underscore": "latest",
+        "jade": "latest",
+        "stylus": "latest",
+        "optimist": "latest",
+        "forever": "latest",
+        "noble": "latest"
+    },
+    "author": "Daryl Jewkes @ LSC Group"
+}
