@@ -1,4 +1,4 @@
 DroneControlCenter
 ==================
 
-Bluetooth LE tracking and management
+Bluetooth LE tracking and management using NodeJS
