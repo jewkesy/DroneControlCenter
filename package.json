@@ -1,7 +1,7 @@
 {
-    "name": "FitBitTracker",
+    "name": "DroneControlCenter",
     "version": "0.1.0",
-    "description": "Track FitBits when in range of a node",
+    "description": "Passively tracks BLE devices when in range of a node",
     "dependencies": {
         "socket.io": "latest",
         "express": "latest",
@@ -12,5 +12,5 @@
         "forever": "latest",
         "noble": "latest"
     },
-    "author": "Daryl Jewkes @ LSC Group"
+    "author": "Daryl Jewkes"
 }
