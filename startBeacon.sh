@@ -10,6 +10,6 @@
 # Invoke the Forever module
 sudo forever \
 start \
--al forever.log \
--ao out.log \
+-l forever.log \
+-o out.log \
 -ae err.log \
