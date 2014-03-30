@@ -10,7 +10,8 @@
         "stylus": "latest",
         "optimist": "latest",
         "forever": "latest",
-        "noble": "latest"
+        "noble": "latest",
+        "mongodb": "latest"
     },
     "author": "Daryl Jewkes"
 }
