@@ -7,32 +7,14 @@
 // };
 
 var peeps = [	{ name : 'Daryl',	dbName : 'daryl', deviceId : 'DE:2F:C6:6A:FB:C3', avatar : 'https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-ash3/t1/1535630_10152007345968961_563794759_n.jpg' },
-				{ name : 'Phil', 	dbName : 'phil', deviceId : 'D0:21:1F:DA:EF:EC', avatar : '/images/phil.png' },
-				{ name : 'Will', 	dbName : 'will', deviceId : 'DD:40:05:1B:F5:55', avatar : 'https://scontent-a.xx.fbcdn.net/hphotos-ash3/t1.0-9/6255_1175812628798_7247850_n.jpg' },
-				{ name : 'Greg', 	dbName : 'greg', deviceId : 'C9:00:4D:AE:4A:03', avatar : 'https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-frc1/t31/1009542_10152120374268033_1890532854_o.jpg' },
-				{ name : 'Toni', 	dbName : 'toni', deviceId : 'CF:CB:7F:4A:D3:12', avatar : '/images/avatar.jpg' },
-				{ name : 'Laura', 	dbName : 'laura', deviceId : 'DD:57:82:0B:68:DE', avatar : 'https://pbs.twimg.com/profile_images/378800000416225659/bb4b4d86191150a620fb179c8353d315.jpeg' },
-				{ name : 'Rohit', 	dbName : 'rohit', deviceId : 'C0:A2:C9:9A:30:A8', avatar : '/images/avatar.jpg' },
-				{ name : 'DebbieB', dbName : 'bryne', deviceId : 'D5:1A:D5:49:FD:4A', avatar : '/images/avatar.jpg' },
-				{ name : 'Mark', 	dbName : 'corner', deviceId : 'EF:5A:B1:AB:4E:C3', avatar : 'https://pbs.twimg.com/profile_images/378800000774974810/37069c657c27dec94d6dae018a5da0e3_bigger.jpeg' },
-				{ name : 'Shane', 	dbName : 'shane', deviceId : 'EC:E4:42:74:ED:68', avatar : 'https://pbs.twimg.com/profile_images/2535617272/image_bigger.jpg' },
-				{ name : 'Webby', 	dbName : 'webby', deviceId : 'EF:BF:90:92:63:45', avatar : 'https://pbs.twimg.com/profile_images/1489656020/285866_10150755959350112_516845111_20139145_2842816_o_bigger.jpg' },
-				{ name : 'Tom', 	dbName : 'tom', deviceId : 'EC:81:12:14:DA:D5', avatar : '/images/avatar.jpg' },
-				{ name : 'Kim', 	dbName : 'kim', deviceId : 'DF:3A:20:B7:4B:6B', avatar : '/images/avatar.jpg' },
 				{ name : 'FlexTest', 	dbName : 'FlexTest', deviceId : 'DE:77:E4:14:E9:2F', avatar : 'http://www.clove.co.uk/product-images/fullsize/fitbit-flex-wristband-tangerine-gad-fwrist3.jpg' },
-				{ name : 'MarkP', 	dbName : 'parsons', deviceId : 'D8:F4:4F:6B:D4:30', avatar : '/images/avatar.jpg' },
-				{ name : 'AndyT', 	dbName : 'tully', deviceId : 'D7:38:EA:DA:9B:86', avatar : 'https://media.licdn.com/mpr/mpr/shrink_200_200/p/1/000/06b/196/05bf67e.jpg' },
-				{ name : 'Damian', 	dbName : 'damian', deviceId : 'EF:2D:65:A1:CC:78', avatar : 'https://pbs.twimg.com/profile_images/1013395354/054d3998-a7ce-4d7d-bd53-7056ff1dde47_bigger.png' },
-				{ name : 'Michelle',dbName : 'michelle', deviceId : 'FE:AA:AE:9C:9A:39', avatar : 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/t1/p160x160/1504089_10152214987955466_1749674393_n.jpg' },
-				{ name : 'SteveP', 	dbName : 'penver', deviceId : 'EB:DB:A8:BA:D5:9F', avatar : '/images/avatar.jpg' },
-				{ name : 'DebbieF',	dbName : 'djs', deviceId : 'DF:3A:20:B7:4B:6B', avatar : '/images/avatar.jpg' }
 			];
 
-var beacons = 	[ 	{ name : 'kiosk', 	coords : '3x14' },
+var beacons = 	[
 					{ name : 'beagle', 	coords : '1x5', wifiIp: '192.168.25.199'},
-					{ name : 'innovation', 	coords : '1x6' },
-					{ name : 'train2',	coords : '1x11'},
-					{ name : 'user6',	coords : '9x16'}
+					{ name : 'device1', 	coords : '1x6' },
+					{ name : 'device2',	coords : '1x11'},
+					{ name : 'pi',	coords : '9x16'}
 				];
 
 function querystring(key) {
@@ -47,7 +29,7 @@ function orderSort(a,b) {
 }
 
 window.createChatti = (function ($) {
-	return function () {			
+	return function () {
 		var server = null;
 		var scanId;
 		var heartbeatId;
@@ -128,7 +110,7 @@ window.createChatti = (function ($) {
 							avatar.attr('src', '/images/??.png');
 							break;
 					}
-					
+
 					var what = $('<span></span>').addClass('beacons').html(chatti.views.formatBeaconList(drone.beacons));
 					var where = $('<p></p>').addClass('location').html(drone.location).append(what);
 					var when = $('<span></span>').addClass('time').html(new Date().toUTCString());
@@ -153,8 +135,8 @@ window.createChatti = (function ($) {
 					return retVal;
 				},
 				buildBaselineDrones: function() {
-//TODO : Decide if we show known drones regardless if they are running					
-					//$.each( beacons, function( key, beacon ) { 
+//TODO : Decide if we show known drones regardless if they are running
+					//$.each( beacons, function( key, beacon ) {
 						//console.log(beacon);
 					//} );
 				},
@@ -171,7 +153,7 @@ window.createChatti = (function ($) {
 
 					$('#mapContainer').append(map);
 
-					$.each( beacons, function( key, beacon ) { 
+					$.each( beacons, function( key, beacon ) {
 						$('#' + beacon.coords).html(beacon.name).addClass('beaconInit').attr('name', beacon.name);
 					});
 				},
@@ -224,7 +206,7 @@ window.createChatti = (function ($) {
 				sendHeartBeat: function () {
 					chatti.server.sendMessage({
 						message: 'heartbeat',
-						type: 'browser', 
+						type: 'browser',
 						ipaddress: myIpAddress
 					});
 				}
@@ -261,7 +243,7 @@ window.createChatti = (function ($) {
 					return message;
 				},
 				startScanning: function () {
-					var intv = (+$('#duration').val() + 1) * 1000 
+					var intv = (+$('#duration').val() + 1) * 1000
 
 					scanId = setInterval(function() {
 						$('#broadcast').fadeIn('slow', function(){
@@ -306,7 +288,7 @@ window.createChatti = (function ($) {
 							$(this).fadeTo('slow', 0.85);
 						}
 						else if (diff >= 30 && diff < 44) {
-							$(this).fadeTo('slow', 0.6);	
+							$(this).fadeTo('slow', 0.6);
 						}
 						else if (diff >= 45 && diff < 50) {
 							$(this).fadeTo('slow', 0.4);
@@ -341,8 +323,8 @@ window.createChatti = (function ($) {
 									else if ($(this).attr('type') == 'peep') {
 										chatti.dom.appendError($(this).find($('span.name')).html() + ' is not in range');
 									}
-//TODO decide whether to remove items or leave in faded state.  Add status to prevent checks until reenabled							
-									$(this.remove());	
+//TODO decide whether to remove items or leave in faded state.  Add status to prevent checks until reenabled
+									$(this.remove());
 								});
 							});
 						}
@@ -375,7 +357,7 @@ window.createChatti = (function ($) {
 					}
 
 					//now update the map
-					$.each( beacons, function( key, beacon ) { 
+					$.each( beacons, function( key, beacon ) {
 						if (beacon.name == heartbeat.user) {
 							$('#' + beacon.coords).html(beacon.name).removeClass().addClass('beacon').attr('name', beacon.name);
 								$('#' + beacon.coords).fadeTo('fast', 1, function () {
@@ -431,9 +413,9 @@ window.createChatti = (function ($) {
 					}
 
 					if (data.error) {
-						chatti.dom.appendError("From: " + data.user + 
-							"; ToUser: " + data.toUser + 
-							"; Message: " + data.message + 
+						chatti.dom.appendError("From: " + data.user +
+							"; ToUser: " + data.toUser +
+							"; Message: " + data.message +
 							"; Duration: " + data.duration);
 						return;
 					}
@@ -444,7 +426,7 @@ window.createChatti = (function ($) {
 					}
 
 					if (data.responseTo && data.responseTo.toLowerCase() == "list-devices") {
-			
+
 						chatti.dom.identifyUsers(data.message, data.location);
 //TODO						#The following is handled in the clients, so no need for direct messaging here????
 						// $('#drones').children().each(function (index) {
@@ -465,9 +447,9 @@ window.createChatti = (function ($) {
 				onTextboxEnter: function (e) {
 					var value = $(this).val();
 					if (value.length > 0) {
-						chatti.dom.appendMessage("From: " + username + 
-							"; ToUser: " + $('#toUser').val() + 
-							"; Message: " + value + 
+						chatti.dom.appendMessage("From: " + username +
+							"; ToUser: " + $('#toUser').val() +
+							"; Message: " + value +
 							"; Duration: " + $('#duration').val()).addClass('own-message');
 						chatti.server.sendMessage({
 							toUser: $('#toUser').val(),
@@ -513,7 +495,7 @@ window.createChatti = (function ($) {
 
 					$('#mapContainer').hide();
 					$('#history').hide();
-					
+
 				},
 				showMap: function (e) {
 					$('#mnuMissionControl').removeClass('selected');
@@ -526,7 +508,7 @@ window.createChatti = (function ($) {
 					$('#chat-history').hide();
 					$('#drones').hide();
 					$('#people').hide();
-					$('#commands').hide();			
+					$('#commands').hide();
 				},
 				showHistory: function (e) {
 					$('#mnuMissionControl').removeClass('selected');
@@ -538,8 +520,8 @@ window.createChatti = (function ($) {
 					$('#mapContainer').hide();
 					$('#chat-history').hide();
 					$('#drones').hide();
-					$('#people').hide();					
-					$('#commands').hide();			
+					$('#people').hide();
+					$('#commands').hide();
 				}
 			}
 		};
@@ -551,4 +533,4 @@ window.createChatti = (function ($) {
 
 $(function () {
 	var chatti = window.createChatti('');
-});			
+});
