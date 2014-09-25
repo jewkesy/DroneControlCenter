@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'web/public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
+console.log("NOTE sockets.io wont work using localhost.  use the machine IP.");
 console.log("Running with the following configuration: -");
 console.log(config);
 

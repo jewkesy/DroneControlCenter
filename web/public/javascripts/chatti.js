@@ -40,7 +40,9 @@ window.createChatti = (function ($) {
 
 		var chatti = {
 			init: function (host){
-				server = io.connect(host || location.host);   //using routes meant location.href no longer worked correctly
+				var connectTo = host || location.host;    //using routes meant location.href no longer worked correctly
+				console.log(connectTo);
+				server = io.connect(connectTo);
 				server.on('connect', chatti.events.onConnect);
 				server.on('disconnect', chatti.events.onDisconnect);
 				server.on('message', chatti.events.onClientMessage);
@@ -393,8 +395,9 @@ window.createChatti = (function ($) {
 					$('#serverStatus').removeClass('connected').addClass('disconnected').html('Disconnected from host ' + server.socket.options.host + ':' + server.socket.options.port);
 				},
 				onServerError: function (err) {
-					clearInterval(heartbeatId);
 					console.log(err);
+					clearInterval(heartbeatId);
+
 					$('#serverStatus').removeClass('connected').addClass('disconnected').html('Error received from host: ' + err);
 				},
 				onClientMessage: function (data) {
