@@ -56,9 +56,12 @@ server.on('data', function (data) {
 	try {
 		var parsed = JSON.parse(data.toString());
 
-//console.log(data.toString())
+		if (!parsed.data.user) {
+			console.log(data.toString());
+		}
 
-		if (parsed.data.user.toLowerCase().indexOf(userFilter.toLowerCase()) >= 0) {
+//console.log(data.toString())
+		if (parsed.data.user && parsed.data.user.toLowerCase().indexOf(userFilter.toLowerCase()) >= 0) {
 			console.log(data.toString());
 			if ((parsed.data.message == 'heartbeat') && showHeartbeats){
 				console.log(data.toString());

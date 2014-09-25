@@ -29,7 +29,7 @@ var peeps = [	{ name : 'Daryl',	dbName : 'daryl', deviceId : 'DE:2F:C6:6A:FB:C3'
 			];
 
 var beacons = 	[ 	{ name : 'kiosk', 	coords : '3x14' },
-					{ name : 'beagle', 	coords : '1x5' },
+					{ name : 'beagle', 	coords : '1x5', wifiIp: '192.168.25.199'},
 					{ name : 'innovation', 	coords : '1x6' },
 					{ name : 'train2',	coords : '1x11'},
 					{ name : 'user6',	coords : '9x16'}
@@ -87,6 +87,7 @@ window.createChatti = (function ($) {
 					msgShowListDevices = $('#chkboxListDevices').is(':checked')
 				})
 
+				chatti.views.buildBaselineDrones();
 				chatti.views.buildMap();
 				chatti.views.buildHistoryHolder();
 
@@ -150,6 +151,12 @@ window.createChatti = (function ($) {
 						});
 					}
 					return retVal;
+				},
+				buildBaselineDrones: function() {
+//TODO : Decide if we show known drones regardless if they are running					
+					//$.each( beacons, function( key, beacon ) { 
+						//console.log(beacon);
+					//} );
 				},
 				buildMap: function () {
 					var map = $('<table></table>').addClass('map');
@@ -301,21 +308,28 @@ window.createChatti = (function ($) {
 						else if (diff >= 30 && diff < 44) {
 							$(this).fadeTo('slow', 0.6);	
 						}
-						else if (diff >= 45 && diff < 59) {
+						else if (diff >= 45 && diff < 50) {
 							$(this).fadeTo('slow', 0.4);
 							if ($(this).attr('type') == 'terminal') {
 								chatti.views.warnMapItem($(this).attr('id'));
-								chatti.dom.appendWarning($(this).attr('id') + ' may not be responding');
+								chatti.dom.appendWarning($(this).attr('id') + ' has not responded after ' + diff + ' seconds' );
 							}
-						}
-						else if (diff >= 60 && diff < 89) {
-							$(this).fadeTo('slow', 0.33);
-							if ($(this).attr('type') == 'peep') {
+							else if ($(this).attr('type') == 'peep') {
 								chatti.dom.appendWarning($(this).find($('span.name')).html() + ' may not be within range')
 							}
 						}
-						else if (diff >= 90 && diff < 119) {
+						else if (diff >= 50 && diff < 89) {
+							$(this).fadeTo('slow', 0.33);
+						}
+						else if (diff >= 90 && diff < 95) {
 							$(this).fadeTo('slow', 0.2);
+							if ($(this).attr('type') == 'terminal') {
+								chatti.views.warnMapItem($(this).attr('id'));
+								chatti.dom.appendWarning($(this).attr('id') + ' has still not responded after ' + diff + ' seconds' );
+							}
+							else if ($(this).attr('type') == 'peep') {
+								chatti.dom.appendWarning($(this).find($('span.name')).html() + ' still not be within range')
+							}
 						}
 						else if (diff >= 120) {
 							$(this).fadeTo('slow', 0, function() {
@@ -327,6 +341,7 @@ window.createChatti = (function ($) {
 									else if ($(this).attr('type') == 'peep') {
 										chatti.dom.appendError($(this).find($('span.name')).html() + ' is not in range');
 									}
+//TODO decide whether to remove items or leave in faded state.  Add status to prevent checks until reenabled							
 									$(this.remove());	
 								});
 							});
